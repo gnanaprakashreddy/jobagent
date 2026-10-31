@@ -77,6 +77,7 @@ function computeJobs() {
   const p = state.profile;
   const q = ui.q.toLowerCase();
   const out = [];
+  const hasProfile = !!(p.targetRoles?.length || p.skills?.length);
   for (const j of feed.jobs) {
     const r = state.jobs[j.id];
     if (!ui.showHidden && r?.status === 'dismissed') continue;
@@ -86,7 +87,7 @@ function computeJobs() {
     const h = heuristicScore(j, p);
     if (h < 0) continue;
     const s = r?.score ?? h;
-    if (s < ui.min) continue;
+    if (s < ui.min && hasProfile) continue;
     out.push({ j, r, h, s });
   }
   out.sort(ui.sort === 'new'
