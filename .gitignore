@@ -3,6 +3,6 @@ data/
 applications/
 .env
 profile.json
-resume.*
+/resume.*
 
 site/
