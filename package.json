@@ -1,0 +1,27 @@
+﻿{
+    "name":  "job-agent",
+    "version":  "1.0.0",
+    "description":  "",
+    "main":  "src/cli.js",
+    "scripts":  {
+                    "list":  "node src/cli.js list",
+                    "run":  "node src/cli.js run",
+                    "start":  "node src/cli.js"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "dependencies":  {
+                         "mammoth":  "^1.13.0",
+                         "pdf-parse":  "^2.4.5"
+                     },
+    "type":  "module",
+    "bin":  {
+                "job-agent":  "src/cli.js"
+            },
+    "engines":  {
+                    "node":  "\u003e=22.13"
+                }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Your Name",
+  "email": "you@example.com",
+  "phone": "+91-00000-00000",
+  "linkedin": "https://linkedin.com/in/your-profile",
+  "github": "https://github.com/your-user",
+  "portfolio": "",
+  "currentLocation": "Bengaluru, India",
+
+  "resumePath": "./resume.pdf",
+
+  "targetRoles": ["Software Engineer", "Backend Developer", "Full Stack Developer"],
+  "skills": ["JavaScript", "TypeScript", "Node.js", "React", "Python", "AWS", "Docker", "SQL"],
+  "excludeKeywords": ["intern", "principal", "director", "clearance"],
+  "seniority": "mid-level (3-5 years)",
+
+  "locations": ["Remote", "Bengaluru", "Pune", "Hyderabad"],
+  "strictLocation": false,
+  "remoteOnly": false,
+  "minSalary": "18 LPA / 40k USD",
+  "noticePeriod": "30 days",
+  "workAuthorization": "Indian citizen; needs visa sponsorship outside India",
+  "extraNotes": "Prefer product companies, open to relocation within India.",
+
+  "sources": ["remotive", "remoteok", "arbeitnow", "themuse", "adzuna"],
+  "adzunaCountry": "in",
+  "maxAgeDays": 30,
+  "maxJobsToRank": 25,
+  "minScoreToPrepare": 70,
+  "autoPrepareTop": 5
+}
