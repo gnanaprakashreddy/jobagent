@@ -1,0 +1,51 @@
+name: Build job feed & deploy app
+
+on:
+  schedule:
+    - cron: "15 */6 * * *" # refresh jobs every 6 hours
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Optional repo variables (Settings -> Secrets and variables -> Actions -> Variables)
+      FEED_QUERIES: ${{ vars.FEED_QUERIES }}
+      FEED_LOCATIONS: ${{ vars.FEED_LOCATIONS }}
+      ADZUNA_COUNTRY: ${{ vars.ADZUNA_COUNTRY }}
+      ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+      ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --omit=dev
+      - name: Fetch public job postings and build site
+        run: node src/cli.js feed
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

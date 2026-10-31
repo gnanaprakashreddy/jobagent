@@ -22,7 +22,7 @@ const DEFAULTS = {
   noticePeriod: '',
   workAuthorization: '',
   extraNotes: '',
-  sources: ['remotive', 'remoteok', 'arbeitnow', 'themuse', 'adzuna'],
+  sources: ['remotive', 'remoteok', 'arbeitnow', 'themuse', 'jobicy', 'himalayas', 'adzuna'],
   adzunaCountry: 'in',
   maxAgeDays: 30,
   maxJobsToRank: 25,

@@ -25,7 +25,7 @@ Usage: node src/cli.js <command> [options]
   mark <id> <status> [--note TEXT]
                             Statuses: ${db.STATUSES.join(', ')}
   followups [--days N]      Draft follow-ups for applications with no reply after N days (default 7)
-  dashboard                 Build the static HTML dashboard in site/index.html
+  feed                      Build the web app + public jobs.json feed into site/ (used by GitHub Pages)
   stats                     Pipeline summary
 `;
 
@@ -126,9 +126,9 @@ async function main() {
       console.log(`#${id} -> ${status}`);
       break;
     }
-    case 'dashboard': {
-      const { buildDashboard } = await import('./dashboard.js');
-      console.log(`Dashboard written to ${buildDashboard()}`);
+    case 'feed': {
+      const { buildSite } = await import('./feed.js');
+      await buildSite();
       break;
     }
     case 'followups': await agent.followups(loadProfile(), Number(o.days || 7)); break;
